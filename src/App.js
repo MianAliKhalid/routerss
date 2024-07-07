@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./components/NavBar";
+
+import Home from "./components/Home";
+import { Routes,Route } from "react-router-dom";
+import Movie from "./components/Movie";
+import Anime from "./components/Anime";
+import Upcomming from "./components/Upcomming";
+import Subscription from "./components/Subscription";
+import Error from './components/Error'
 
 function App() {
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/movie" element={<Movie/>}>
+            <Route path="1990" element={<Anime/>}/>
+            <Route path="2020" element={<Upcomming/>}/>
+          </Route>
+          <Route path="/anime" element={<Anime/>}/>
+          <Route path="/upcomming" element={<Upcomming/>}/>
+          <Route path="/subscription" element={<Subscription/>}/>
+          <Route path="*" element={<Error/>}/>
+        </Routes>
+      
+      
+      
     </div>
   );
 }
